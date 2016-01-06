@@ -94,19 +94,39 @@ taper_diam(hill, 4*iseg.diam, iseg.diam)
 
 n_axon_seg = 5
 
-myelin = [h.Section() for i in range(n_axon_seg)]
+myelin = [h.Section(name="myelin %d" % i) for i 
+          in range(n_axon_seg)]
 for myelin_sec in myelin:
     myelin_sec.nseg = 5 # each of the 5 sections has 5 segments
     myelin_sec.L = 100.
     myelin_sec.diam = iseg.diam
 
-node = [h.Section() for i in range(n_axon_seg)]
+node = [h.Section(name="node %d" % i) for i 
+        in range(n_axon_seg)]
 for node_sec in node:
     node_sec.nseg = 1
     node_sec.L = 100.
     node_sec.diam = iseg.diam*0.75
 
 
+# childsec.connect(parentsec, parentx, childx)
+hill.connect(soma, 0.5, 0)
+iseg.connect(hill, 1 , 0)
+myelin[0].connect(iseg, 1, 0)
+node[0].connect(myelin[0], 1, 0)
+
+for i in range(n_axon_seg-1):
+     myelin[i+1].connect(node[i], 1, 0)
+     node[i+1].connect(myelin[i+1], 1 ,0)
+
+#h.topology()
+
+for sec in h.allsec():
+    sec.insert('pas')
+    sec.Ra = ra
+    sec.cm = c_m
+    sec.g_pas = 1./rm
+    sec.e_pas = v_init
 
 
 
