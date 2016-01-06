@@ -113,6 +113,6 @@ import pylab as pl
 pl.plot(t,v_soma)
 pl.xlim(0,100)
 #pl.ylim(-80,10)
-pl.savefig('img/L5_record.png')
+pl.savefig('data/img/L5_record_soma_only.png')
 
 
