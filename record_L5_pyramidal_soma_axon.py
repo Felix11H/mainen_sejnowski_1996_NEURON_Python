@@ -109,6 +109,8 @@ for node_sec in node:
 
 
 
+
+
 # --- stimulation ---
 
 st = h.IClamp(soma(0.5))
@@ -152,8 +154,8 @@ f = open('data/L5_record_soma_axon.p', 'wb')
 pickle.dump((list(t),list(v_soma)), f)
 f.close()
 
-for i in xrange(140,150):
-    print t[i], v_soma[i]
+# for i in xrange(140,150):
+#     print t[i], v_soma[i]
 
 
 # --- plotting ---
