@@ -92,6 +92,22 @@ hill.L = 10.
 hill.nseg = 5
 taper_diam(hill, 4*iseg.diam, iseg.diam)
 
+n_axon_seg = 5
+
+myelin = [h.Section() for i in range(n_axon_seg)]
+for myelin_sec in myelin:
+    myelin_sec.nseg = 5 # each of the 5 sections has 5 segments
+    myelin_sec.L = 100.
+    myelin_sec.diam = iseg.diam
+
+node = [h.Section() for i in range(n_axon_seg)]
+for node_sec in node:
+    node_sec.nseg = 1
+    node_sec.L = 100.
+    node_sec.diam = iseg.diam*0.75
+
+
+
 
 # --- stimulation ---
 
