@@ -54,43 +54,31 @@ soma.nseg = 1
 soma.diam = 25
 
 
-# passive membrane channels
-soma.insert('pas')
-soma.Ra = ra
-soma.cm = c_m
-soma.g_pas = 1./rm
-soma.e_pas = v_init
 
-# na+ channels
-soma.insert('na')
-soma.gbar_na = gna_soma
-soma.insert('kv')
-soma.gbar_kv = gkv_soma
-
-soma.insert('km')
-soma.gbar_km = gkm_soma
-soma.insert('kca')
-soma.gbar_kca = gkca_soma
-soma.insert('ca')
-soma.gbar_ca = gca_soma
-soma.insert('cad')
 
 
 
 # --- axon --- 
 
+
+
 # initial segment between hillock + myelin
 iseg = h.Section(name='iseg')
 iseg.L = 15.
 iseg.nseg = 5
-iseg.diam = 14.790199/10. # !!!! equivalent diameter only 
+iseg.diam = 1.4790199  # !!!! equivalent diameter only 
                           # valid for L5 pyramdial 
 
 # axon hillock
 hill = h.Section(name='hill')
 hill.L = 10.
 hill.nseg = 5
+
 taper_diam(hill, 4*iseg.diam, iseg.diam)
+
+#h.cas(hill)
+#h('diam(0:1) = 4*1.4790199:1.4790199')
+
 
 n_axon_seg = 5
 
@@ -105,7 +93,7 @@ node = [h.Section(name="node %d" % i) for i
         in range(n_axon_seg)]
 for node_sec in node:
     node_sec.nseg = 1
-    node_sec.L = 100.
+    node_sec.L = 1.
     node_sec.diam = iseg.diam*0.75
 
 
@@ -128,8 +116,51 @@ for sec in h.allsec():
     sec.g_pas = 1./rm
     sec.e_pas = v_init
 
+    sec.insert('na')
 
 
+# na+ channels
+soma.gbar_na = gna_soma
+
+soma.insert('kv')
+soma.gbar_kv = gkv_soma
+
+soma.insert('km')
+soma.gbar_km = gkm_soma
+soma.insert('kca')
+soma.gbar_kca = gkca_soma
+soma.insert('ca')
+soma.gbar_ca = gca_soma
+soma.insert('cad')
+
+
+for myelin_sec in myelin:
+    myelin_sec.cm = cm_myelin
+    myelin_sec.gbar_na = gna_dend
+        
+hill.gbar_na = gna_node
+iseg.gbar_na = gna_node
+
+for node_sec in node:
+    node_sec.g_pas = g_pas_node
+    node_sec.gbar_na = gna_node
+
+iseg.insert('kv')
+iseg.gbar_kv = gkv_axon
+
+hill.insert('kv') 
+hill.gbar_kv = gkv_axon
+
+for sec in h.allsec():
+    if h.ismembrane('k_ion'):
+        sec.ek = Ek
+    if h.ismembrane('na_ion'):
+        sec.ena = Ena
+        h.vshift_na = -5
+    if h.ismembrane('ca_ion'):
+        sec.eca = 140
+        h.ion_style("ca_ion",0,1,0,0,0)
+        h.vshift_ca = 0
 
 # --- stimulation ---
 
@@ -148,7 +179,7 @@ t.record(h._ref_t)
 # --- simulation control 
 
 
-tstop = 100
+tstop = 150
 
 def initialize():
     h.finitialize(v_init)
@@ -183,8 +214,8 @@ f.close()
 import pylab as pl
 
 pl.plot(t,v_soma)
-pl.xlim(0,100)
-#pl.ylim(-80,10)
+pl.xlim(0,160)
+pl.ylim(-80,60)
 pl.savefig('data/img/L5_record_soma_axon.png')
 
 

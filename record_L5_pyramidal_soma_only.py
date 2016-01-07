@@ -101,7 +101,7 @@ run()
 
 import pickle 
 
-f = open('data/L5_record.p', 'wb')
+f = open('data/L5_record_soma_only.p', 'wb')
 pickle.dump((list(t),list(v_soma)), f)
 f.close()
 
