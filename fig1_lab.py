@@ -57,4 +57,4 @@ def fig1_make(cell_path, st_amp, label, spines=True):
 
 
 if __name__=='__main__':
-    fig1_make(sys.argv[1], float(sys.argv[2]), sys.argv[3], bool(sys.argv[4]))
+    fig1_make(sys.argv[1], float(sys.argv[2]), sys.argv[3], spines=bool(int(sys.argv[4])))
