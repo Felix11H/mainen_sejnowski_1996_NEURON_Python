@@ -57,5 +57,5 @@ st_del = 5.
 
 # ---- simulation ----
 
-tstop = 1500
+tstop = 1000
 dt = 0.025

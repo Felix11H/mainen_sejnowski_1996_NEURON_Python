@@ -46,7 +46,8 @@ and to control locations of RunControl panel,
 model selection panel, voltage axis graph, 
 and PlotShape.
 
-Run control changes by Felix Z. Hoffmann (01/2016) to save output and compre it with Python implementation
+Run control changes by Felix Z. Hoffmann (01/2016) 
+to save output and compre it with Python implementation
  
    -------------------------------------------------------------- */
 
@@ -57,7 +58,7 @@ objref sh, st, axonal, dendritic, dendritic_only,  tvec, vvec
 create soma
 access soma
 
-tstop = 1500
+tstop = 1000
 steps_per_ms = 40
 dt = 0.025
 
