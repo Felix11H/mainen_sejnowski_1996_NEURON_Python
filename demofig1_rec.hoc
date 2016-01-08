@@ -57,7 +57,7 @@ objref sh, st, axonal, dendritic, dendritic_only,  tvec, vvec
 create soma
 access soma
 
-tstop = 100
+tstop = 1500
 steps_per_ms = 40
 dt = 0.025
 

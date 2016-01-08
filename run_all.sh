@@ -11,3 +11,7 @@ python fig1_lab.py "cells/j7.hoc" 0.07 "fig1_L4_stellate" 1
 python fig1_lab.py "cells/j8.hoc" 0.1 "fig1_L2_3_pyramid" 1
 python fig1_lab.py "cells/j4a.hoc" 0.2 "fig1_L5_pyramid" 1
 
+python test_data.py data/fig1_L3_aspiny_hoc.dat data/fig1_L3_aspiny_python.p
+python test_data.py data/fig1_L4_stellate_hoc.dat data/fig1_L4_stellate_python.p
+python test_data.py data/fig1_L2_3_pyramid_hoc.dat data/fig1_L2_3_pyramid_python.p
+python test_data.py data/fig1_L5_pyramid_hoc.dat data/fig1_L5_pyramid_python.p
