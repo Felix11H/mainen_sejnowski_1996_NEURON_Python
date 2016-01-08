@@ -57,7 +57,7 @@ objref sh, st, axonal, dendritic, dendritic_only,  tvec, vvec
 create soma
 access soma
 
-tstop = 1000
+tstop = 100
 steps_per_ms = 40
 dt = 0.025
 
@@ -333,23 +333,23 @@ proc go(){
 load_3dcell("cells/lcAS3.hoc")
 st.amp = 0.05
 go()
-xytofile(tvec, vvec, "data/fig1_L3_aspiny.dat")
+xytofile(tvec, vvec, "data/fig1_L3_aspiny_hoc.dat")
 
 //Layer 4 Stellate
 load_3dcell("cells/j7.hoc")  
 st.amp = 0.07
 go()
-xytofile(tvec, vvec, "data/fig1_L4_stellate.dat")
+xytofile(tvec, vvec, "data/fig1_L4_stellate_hoc.dat")
 
 // Layer 2/3 pyramid
 load_3dcell("cells/j8.hoc")
 st.amp = 0.1
 go()
-xytofile(tvec, vvec, "data/fig1_L2_3_pyramid.dat")
+xytofile(tvec, vvec, "data/fig1_L2_3_pyramid_hoc.dat")
 
 // Layer 5 pyramid
 load_3dcell("cells/j4a.hoc") 
 st.amp = 0.2
 go()
-xytofile(tvec, vvec, "data/fig1_L5_pyramid.dat")
+xytofile(tvec, vvec, "data/fig1_L5_pyramid_hoc.dat")
 
