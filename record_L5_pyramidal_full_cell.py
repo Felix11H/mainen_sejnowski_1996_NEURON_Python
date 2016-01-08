@@ -100,8 +100,7 @@ for sec in dendritic_only:
 iseg = h.Section(name='iseg')
 iseg.L = 15.
 iseg.nseg = 5
-iseg.diam = 1.4790199  # !!!! equivalent diameter only 
-                          # valid for L5 pyramdial 
+iseg.diam = (soma(0.5).area()/(4.*np.pi))**(0.5)/10.
 
 # axon hillock
 hill = h.Section(name='hill')
@@ -227,7 +226,7 @@ t.record(h._ref_t)
 
 # --- simulation control 
 
-
+h.dt = 0.025
 tstop = 500
 
 def initialize():
