@@ -76,7 +76,11 @@ def init_cell(cell_path, spines=True):
     iseg = h.Section(name='iseg')
     iseg.L = iseg_L
     iseg.nseg = iseg_nseg
-    iseg.diam = (soma(0.5).area()/(4.*np.pi))**(0.5)/10.
+    soma_compl_area = 0
+    for seg in soma:
+        soma_compl_area += seg.area()
+    print soma_compl_area
+    iseg.diam = (soma_compl_area/(4.*np.pi))**(0.5)/10.
 
     # axon hillock
     hill = h.Section(name='hill')
