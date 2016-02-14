@@ -13,3 +13,5 @@ then to test everything
 source run_all.sh
 ```
 Felix Z. Hoffmann, 2016.
+
+[ModelDB]: https://senselab.med.yale.edu/modeldb/showModel.cshtml?model=2488
