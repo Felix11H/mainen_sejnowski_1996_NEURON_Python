@@ -4,6 +4,12 @@ Original publication: Z. F. Mainen and T. J. Sejnowski (1996) Influence of dendr
 
 Adapted from the implementation found on [ModelDB], all original files including README.txt are included in this repository.
 
+The Python implementation consists of 
+   fig1_core.py
+   fig1_lab.py
+   params/fig1_params.py
+
+
 To run first 
 ```sh
 nrnivmodl 
