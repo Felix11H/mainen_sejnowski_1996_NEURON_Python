@@ -107,12 +107,21 @@ n_axon_seg = 5
 
 create soma,iseg,hill,myelin[2],node[2]
 
+// after http://www.neuron.yale.edu/phpbb/viewtopic.php?f=8&t=858
+func secarea() { local x, sum
+  sum = 0
+  for (x,0) sum += area(x)
+  return sum
+}
+
 proc create_axon() {
 
   create iseg,hill,myelin[n_axon_seg],node[n_axon_seg]
 
+  soma A = secarea()
+
   soma {
-    equiv_diam = sqrt(area(.5)/(4*PI))
+    equiv_diam = sqrt(A/(4*PI))
 
     // area = equiv_diam^2*4*PI
   }
