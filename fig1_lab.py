@@ -3,6 +3,9 @@ from neuron import h
 
 import sys
 import pickle 
+
+import matplotlib as mpl
+mpl.use('Agg')
 import pylab as pl
 
 from fig1_core import *

@@ -2,6 +2,9 @@
 import sys
 import os
 import numpy as np
+
+import matplotlib as mpl
+mpl.use('Agg')
 import pylab as pl
 
 tv_array = np.loadtxt(sys.argv[1], skiprows=1)
