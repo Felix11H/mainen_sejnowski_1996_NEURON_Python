@@ -6,8 +6,7 @@ Adapted from the implementation found on [ModelDB], all original files including
 
 The Python implementation consists of 
    `fig1_core.py`
-   `fig1_lab.py`
-   `params/fig1_params.py`
+   `fig1_lab.py` and `params/fig1_params.py`.
 
 
 To run first 
